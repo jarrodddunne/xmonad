@@ -1,0 +1,33 @@
+import XMonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
+import System.IO
+
+main = do
+    xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+
+    xmonad $ defaultConfig
+        { manageHook = manageDocks <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , logHook = dynamicLogWithPP xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        }
+        , modMask = mod4Mask
+        , terminal = "xterm"
+        } `additionalKeys`
+        [ ((modMask, xK_i), spawn "chromium-browser --incognito &")
+        , ((mod4Mask, xK_e), spawn "chromium-browser --app=https://gmail.com")
+        , ((mod4Mask, xK_f), spawn "chromium-browser --app=https://feedly.com")
+        , ((mod4Mask, xK_m), spawn "chromium-browser --app=https://mightytext.net")
+        , ((mod4Mask, xK_s), spawn "google-chrome --app=https://player.spotify.com")
+        , ((mod4Mask, xK_n), spawn "google-chrome --app=https://netflix.com")
+        , ((0                    , 0x1008ff12), spawn "pactl set-sink-mute 0 toggle &")
+        , ((0                    , 0x1008ff11), spawn "amixer -q sset Master 10%- &")
+        , ((0                    , 0x1008ff13), spawn "amixer -q sset Master 10%+ &")
+        , ((0                    , 0x1008ffb2), spawn "amixer set Capture toggle &")
+        , ((0                    , 0x1008ff4a), sendMessage ToggleStruts)
+        , ((0                    , 0x1008ff1b), spawn "dmenu_run")
+        ]
