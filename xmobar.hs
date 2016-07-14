@@ -24,8 +24,9 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run StdinReader
                     , Run Battery ["-t","<acstatus>: <left>% - <timeleft>","--","charge_full","-O","AC","-o","Bat","-h","green","-l", "red"] 10
+                    , Run Com ".xmonad/volume.sh" [] "vol" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader%} %cpu%  ||  %memory%  ||  %wlp3s0%  ||  %battery% {<fc=#ee9a00>%date%</fc> ||  %uname%"
+       , template = "%StdinReader%} %cpu%  ||  %memory%  ||  %wlp3s0%  ||  %battery% {%vol%  ||  <fc=#ee9a00>%date%</fc>"
        }
