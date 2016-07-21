@@ -5,7 +5,7 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "grey"
        , alpha = 255
-       , position = Top
+       , position = Static {xpos = 0, ypos = 0, width = 1920, height = 16}
        , textOffset = -1
        , iconOffset = -1
        , lowerOnStart = True
