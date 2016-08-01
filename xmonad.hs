@@ -158,10 +158,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. controlMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm .|. controlMask, xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
 
 
@@ -170,6 +170,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- System App Launches
     , ((modm .|. shiftMask, xK_i), spawn "chromium-browser --incognito &")
     , ((modm .|. shiftMask, xK_a), spawn "atom")
+    , ((modm .|. shiftMask, xK_f), spawn "firefox -private &")
 
     -- Webpage App Launches
     , ((modm .|. mod1Mask , xK_e), spawn "chromium-browser --app=https://gmail.com")
