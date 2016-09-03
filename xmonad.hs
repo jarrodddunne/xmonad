@@ -169,6 +169,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- System App Launches
     , ((modm .|. shiftMask, xK_i), spawn "chromium-browser --incognito &")
+    , ((modm .|. shiftMask, xK_g), spawn "chromium-browser")
     , ((modm .|. shiftMask, xK_a), spawn "atom")
     , ((modm .|. shiftMask, xK_f), spawn "firefox -private &")
     , ((modm .|. shiftMask, xK_k), spawn "keepassx")
