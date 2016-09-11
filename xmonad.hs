@@ -181,6 +181,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. mod1Mask , xK_c), spawn "chromium-browser --new-window https://canvas.rice.edu")
     , ((modm .|. mod1Mask , xK_o), spawn "chromium-browser --new-window https://owlspace-ccm.rice.edu/portal")
     , ((modm .|. mod1Mask , xK_k), spawn "chromium-browser --app=https://keep.google.com")
+    , ((modm .|. mod1Mask , xK_g), spawn "chromium-browser --app=https://app.groupme.com")
     , ((modm .|. mod1Mask , xK_s), spawn "google-chrome --app=https://player.spotify.com")
     , ((modm .|. mod1Mask , xK_n), spawn "google-chrome --app=https://netflix.com")
 
